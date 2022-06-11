@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getUsers } from "./api";
 
 const App = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const { data } = await getUsers();
+      setUsers(data?.results);
+    };
+    fetchUsers();
+  }, []);
+
   return (
     <div className="App">
       <h1 className="text-2xl text-green-500 underline">Tailwind Test</h1>
