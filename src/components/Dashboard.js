@@ -39,7 +39,7 @@ const Dashboard = () => {
       </div>
       {/* User Cards */}
       <div className="w-full flex flex-col justify-center items-center">
-        <div className="border-b p-4 w-full sm:w-96 text-center transition-all duration-300 ease-linear">
+        <div className="border-b p-4 w-full sm:w-96 text-center transition-all duration-200 ease-linear">
           {users
             ?.filter((user) => {
               return (
@@ -59,9 +59,9 @@ const Dashboard = () => {
                 key={i}
                 className={`${
                   i % 2 === 0 || i === 0
-                    ? "bg-gray-100 dark:bg-secondary-dark-bg"
+                    ? "bg-gray-200 dark:bg-secondary-dark-bg"
                     : ""
-                } transition-all duration-300 ease-in-out hover:bg-gray-400 cursor-pointer dark:bg-main-dark-bg dark:hover:bg-gray-500 p-2 rounded-md`}
+                } transition-all duration-200 ease-in-out hover:bg-gray-400 cursor-pointer dark:bg-main-dark-bg dark:hover:bg-gray-500 p-2 rounded-md`}
               >
                 {user?.name?.first} {user?.name?.last}
               </div>
