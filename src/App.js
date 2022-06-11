@@ -1,13 +1,16 @@
 import React from "react";
-import { Dashboard, UserDetails, Home } from "./components";
+import { Dashboard, UserDetails, Home, Navbar } from "./components";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const { mode } = useSelector((state) => state.theme);
 
   return (
     <div className={`${mode === "Dark" ? "dark" : ""} min-h-screen w-full`}>
+      <Toaster />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
