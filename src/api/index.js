@@ -4,4 +4,5 @@ const API = axios.create({
   baseURL: "https://randomuser.me/api",
 });
 
-export const getUsers = (page) => API.get(`/?page=${page}&results=10&seed=abc`);
+export const getUsers = (page) =>
+  API.get(`/?page=${page}&results=10&seed=abc123`);

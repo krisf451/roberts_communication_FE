@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRandomUsers } from "../redux/features/usersSlice";
+import { getRandomUsers, pageUp, pageDown } from "../redux/features/usersSlice";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 const Dashboard = () => {
@@ -21,8 +21,8 @@ const Dashboard = () => {
         </div>
       ))}
       <div className="flex w-32 justify-between">
-        <AiOutlineArrowLeft />
-        <AiOutlineArrowRight />
+        <AiOutlineArrowLeft onClick={() => dispatch(pageDown())} />
+        <AiOutlineArrowRight onClick={() => dispatch(pageUp())} />
       </div>
     </div>
   );
