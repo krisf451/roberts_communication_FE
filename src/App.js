@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Dashboard, UserDetails, Home } from "./components";
 import { Routes, Route } from "react-router-dom";
-import { getUsers } from "./api";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
   const { mode } = useSelector((state) => state.theme);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const { data } = await getUsers();
-      setUsers(data?.results);
-    };
-    fetchUsers();
-  }, []);
-
   return (
-    <div
-      className={`${mode === "Dark" ? "dark" : ""} min-h-screen w-full`}
-    ></div>
+    <div className={`${mode === "Dark" ? "dark" : ""} min-h-screen w-full`}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/users/:id" element={<UserDetails />} />
+      </Routes>
+    </div>
   );
 };
 
