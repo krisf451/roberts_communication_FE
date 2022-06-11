@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const { mode } = useSelector((state) => state.theme);
+  const { page } = useSelector((state) => state.users);
 
   return (
     <div className={`${mode === "Dark" ? "dark" : ""} min-h-screen w-full`}>
@@ -13,7 +14,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path={`/dashboard`} element={<Dashboard />} />
         <Route path="/users/:id" element={<UserDetails />} />
       </Routes>
     </div>

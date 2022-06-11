@@ -14,6 +14,7 @@ import { Menu } from "@headlessui/react";
 
 const Navbar = () => {
   const { mode } = useSelector((state) => state.theme);
+  const { page } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const handleToggle = () => {
     dispatch(toggleDarkMode());
@@ -28,7 +29,7 @@ const Navbar = () => {
       {/* Links - Hidden on Mobile */}
       <div className="hidden md:flex flex-1 justify-around w-full text-sm ease-in-out text-gray-500  dark:text-white">
         <Link
-          to="/dashboard"
+          to={`/dashboard?page=${page}`}
           className="transition-color duration-300 hover:text-gray-800 dark:hover:text-gray-400"
         >
           DASHBOARD
@@ -81,7 +82,7 @@ const Navbar = () => {
               <Menu.Item>
                 {({ active }) => (
                   <Link
-                    to="/dashboard"
+                    to={`/dashboard?page=${page}`}
                     className={`rounded-lg flex items-center px-4 py-4 text-sm ${
                       active ? "bg-gray-200 dark:bg-secondary-dark-bg" : ""
                     }`}
