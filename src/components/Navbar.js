@@ -11,6 +11,7 @@ import {
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { Menu } from "@headlessui/react";
+import logo from "../assets/roberts-img.png";
 
 const Navbar = () => {
   const { mode } = useSelector((state) => state.theme);
@@ -23,7 +24,9 @@ const Navbar = () => {
     <div className="bg-gray-200 dark:bg-secondary-dark-bg flex justify-between w-full h-[4rem] shadow-md items-center dark:text-white">
       {/* Left - Logo */}
       <div className="ml-5 text-2xl font-semibold uppercase">
-        <Link to="/">LOGO</Link>
+        <Link to="/">
+          <img src={logo} alt="logo" className="h-12 w-24" />
+        </Link>
       </div>
 
       {/* Links - Hidden on Mobile */}
