@@ -24,3 +24,9 @@ img {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
+
+@layer utilities {
+  .square {
+    aspect-ratio: 1 / 1;
+  }
+}

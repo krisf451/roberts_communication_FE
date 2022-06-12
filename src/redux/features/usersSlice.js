@@ -12,9 +12,9 @@ const initialState = {
 
 export const getRandomUsers = createAsyncThunk(
   "users/getRandomUsers",
-  async (page, thunkAPI) => {
+  async (thunkAPI) => {
     try {
-      const { data } = await getUsers(page);
+      const { data } = await getUsers();
       return data;
     } catch (e) {
       const message =
@@ -45,21 +45,21 @@ const usersSlice = createSlice({
   },
   extraReducers: {
     [getRandomUsers.pending]: (state) => {
-      console.log("get users pending!!");
+      console.log("get users by page pending!!");
       state.isLoading = true;
     },
     [getRandomUsers.fulfilled]: (state, action) => {
-      console.log("get users succesfully!!");
+      console.log("get users by page succesfully!!");
       state.isLoading = false;
       state.isSuccess = true;
       state.users = action.payload.results;
     },
     [getRandomUsers.rejected]: (state, action) => {
-      console.log("get users rejected!!");
+      console.log("get users by page rejected!!");
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;
-      state.users = null;
+      state.usersByPage = null;
     },
   },
 });
