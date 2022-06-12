@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { UserCard } from ".";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { getRandomUsers, reset } from "../redux/features/usersSlice";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from "react-router";
@@ -58,11 +58,14 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen dark:bg-main-dark-bg dark:text-white">
-      <h1 className="text-2xl font-extrabold text-center pt-4">
-        Search by Name
-      </h1>
-      <div className="p-4 flex justify-center items-center w-96 mx-auto">
+    <div className="grid place-items-center dark:bg-main-dark-bg dark:text-white">
+      <div className="pt-4 w-full sm:w-1/4 flex justify-center items-center flex-col">
+        <label
+          htmlFor="searchTerm"
+          className="text-gray-800 text-center block dark:text-white mb-4"
+        >
+          Search
+        </label>
         <input
           type="text"
           id="search"
@@ -70,54 +73,31 @@ const Dashboard = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-      </div>
-      {/* User Cards */}
-      <div className="w-full flex flex-col justify-center items-center">
-        <div className="border-b p-4 w-full sm:w-96 text-center transition-all duration-200 ease-linear">
-          {searchTerm.length > 0
-            ? filteredUsers?.map((user, i) => (
-                <Link to={`/dashboard/users/${user?.login?.uuid}`} key={i}>
-                  <div
-                    key={i}
-                    className={`${
-                      i % 2 === 0 || i === 0
-                        ? "bg-gray-200 dark:bg-secondary-dark-bg"
-                        : ""
-                    } transition-all duration-200 ease-in-out hover:bg-gray-400 cursor-pointer dark:bg-main-dark-bg dark:hover:bg-gray-500 p-2 rounded-md`}
-                  >
-                    {user?.name?.first} {user?.name?.last}
-                  </div>
-                </Link>
-              ))
-            : users.slice(start, end)?.map((user, i) => (
-                <Link to={`/dashboard/users/${user?.login?.uuid}`} key={i}>
-                  <div
-                    className={`${
-                      i % 2 === 0 || i === 0
-                        ? "bg-gray-200 dark:bg-secondary-dark-bg"
-                        : ""
-                    } transition-all duration-200 ease-in-out hover:bg-gray-400 cursor-pointer dark:bg-main-dark-bg dark:hover:bg-gray-500 p-2 rounded-md`}
-                  >
-                    {user?.name?.first} {user?.name?.last}
-                  </div>
-                </Link>
-              ))}
-        </div>
         {!searchTerm.length > 0 && (
-          <div className="flex w-48 justify-evenly items-center mt-4">
+          <div className="flex w-48 justify-evenly items-center my-4">
             <AiOutlineArrowLeft
-              size={45}
+              size={25}
               onClick={handlePaginateLeft}
               className="cursor-pointer"
             />
             <p>{localPage}</p>
             <AiOutlineArrowRight
-              size={45}
+              size={25}
               onClick={handlePaginateRight}
               className="cursor-pointer"
             />
           </div>
         )}
+      </div>
+      <div className="grid gap-4 p-4 max-w-5xl xs:grid-cols-2 md:grid-cols-4 dark:bg-main-dark-bg dark:text-white">
+        <h1 className="text-4xl font-extrabold xs:col-span-2 bg-yellow-200 dark:text-black xs:grid xs:grid-cols-2 pl-6 py-6 rounded-md">
+          <span>Check out some of these cool users!!</span>
+        </h1>
+        {searchTerm.length > 0
+          ? filteredUsers?.map((user, i) => <UserCard key={i} user={user} />)
+          : users?.slice(start, end)?.map((user, i) => {
+              return <UserCard key={i} user={user} />;
+            })}
       </div>
     </div>
   );

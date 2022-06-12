@@ -25,7 +25,7 @@ const Navbar = () => {
       {/* Left - Logo */}
       <div className="ml-5 text-2xl font-semibold uppercase">
         <Link to="/">
-          <img src={logo} alt="logo" className="h-12 w-24" />
+          <img src={logo} alt="logo" className="h-12 w-auto" />
         </Link>
       </div>
 
