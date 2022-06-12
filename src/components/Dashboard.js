@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { UserCard } from ".";
+import { UserCard } from "../components";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getRandomUsers, reset } from "../redux/features/usersSlice";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
@@ -69,7 +70,7 @@ const Dashboard = () => {
         <input
           type="text"
           id="search"
-          className="h-8 shadow appearance-none border rounded w-full text-gray-700 mb-2 leading-tight focus:outline-none pl-2"
+          className="h-8 shadow appearance-none border rounded w-64 text-gray-700 mb-2 leading-tight focus:outline-none pl-2"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -94,9 +95,17 @@ const Dashboard = () => {
           <span>Check out some of these cool users!!</span>
         </h1>
         {searchTerm.length > 0
-          ? filteredUsers?.map((user, i) => <UserCard key={i} user={user} />)
+          ? filteredUsers?.map((user, i) => (
+              <Link to={`/dashboard/users/${user?.login?.uuid}`}>
+                <UserCard key={i} user={user} />
+              </Link>
+            ))
           : users?.slice(start, end)?.map((user, i) => {
-              return <UserCard key={i} user={user} />;
+              return (
+                <Link to={`/dashboard/users/${user?.login?.uuid}`}>
+                  <UserCard key={i} user={user} />
+                </Link>
+              );
             })}
       </div>
     </div>

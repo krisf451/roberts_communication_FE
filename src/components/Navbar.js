@@ -60,7 +60,7 @@ const Navbar = () => {
             <HiMoon size={35} />
           )}
         </div>
-        <Menu as="div" className="relative md:hidden flex items-center">
+        <Menu as="div" className="relative md:hidden flex items-center z-50">
           <Menu.Button className="cursor-pointer transition-all transform hover:rotate-90 duration-500 ease-linear">
             <AiOutlineMenu size={25} />
           </Menu.Button>
