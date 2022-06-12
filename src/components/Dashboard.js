@@ -6,7 +6,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from "react-router";
 
 const Dashboard = () => {
-  const { users, page } = useSelector((state) => state.users);
+  const { users } = useSelector((state) => state.users);
   const [searchTerm, setSearchTerm] = useState("");
   const [localPage, setLocalPage] = useState(1);
   const [start, setStart] = useState(0);
@@ -30,35 +30,31 @@ const Dashboard = () => {
     navigate("/dashboard");
 
     return () => dispatch(reset());
-  }, [dispatch, page]);
+  }, [dispatch, navigate]);
 
   const handlePaginateLeft = () => {
     if (localPage === 1) return;
-    if (start > 0 && end > 10) {
+    if (start > 0 && end > 10 && localPage > 1) {
       setStart((prev) => prev - 10);
       setEnd((prev) => prev - 10);
-    }
-    if (localPage > 1) {
       setLocalPage((prev) => prev - 1);
-      navigate(`/dashboard?page=${localPage - 1}`);
     } else {
       setLocalPage(1);
       navigate(`/dashboard`);
     }
+    navigate(`/dashboard?page=${localPage - 1}`);
   };
   const handlePaginateRight = () => {
     if (localPage === 10) return;
-    if (start < 90 && end < 100) {
+    if (start < 90 && end < 100 && localPage < 10) {
       setStart((prev) => prev + 10);
       setEnd((prev) => prev + 10);
-    }
-    if (localPage < 10) {
       setLocalPage((prev) => prev + 1);
-      navigate(`/dashboard?page=${localPage + 1}`);
     } else {
       setLocalPage(10);
       navigate(`/dashboard`);
     }
+    navigate(`/dashboard?page=${localPage + 1}`);
   };
 
   return (
@@ -107,20 +103,21 @@ const Dashboard = () => {
                 </Link>
               ))}
         </div>
-
-        <div className="flex w-48 justify-evenly items-center mt-4">
-          <AiOutlineArrowLeft
-            size={45}
-            onClick={handlePaginateLeft}
-            className="cursor-pointer"
-          />
-          <p>{localPage}</p>
-          <AiOutlineArrowRight
-            size={45}
-            onClick={handlePaginateRight}
-            className="cursor-pointer"
-          />
-        </div>
+        {!searchTerm.length > 0 && (
+          <div className="flex w-48 justify-evenly items-center mt-4">
+            <AiOutlineArrowLeft
+              size={45}
+              onClick={handlePaginateLeft}
+              className="cursor-pointer"
+            />
+            <p>{localPage}</p>
+            <AiOutlineArrowRight
+              size={45}
+              onClick={handlePaginateRight}
+              className="cursor-pointer"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
