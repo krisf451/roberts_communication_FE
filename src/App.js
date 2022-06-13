@@ -9,7 +9,6 @@ import {
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const { mode } = useSelector((state) => state.theme);
@@ -17,7 +16,6 @@ const App = () => {
   return (
     <div className={`${mode === "Dark" ? "dark" : ""} min-h-screen w-full`}>
       <div className="bg-main-bg dark:bg-main-dark-bg min-h-screen w-full">
-        <Toaster />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

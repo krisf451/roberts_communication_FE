@@ -22,14 +22,12 @@ const Navbar = () => {
   };
   return (
     <div className="bg-gray-200 dark:bg-secondary-dark-bg flex justify-between w-full h-[4rem] shadow-md items-center dark:text-white relative z-50">
-      {/* Left - Logo */}
       <div className="ml-5 text-2xl font-semibold uppercase">
         <Link to="/">
           <img src={logo} alt="logo" className="h-12 w-auto" />
         </Link>
       </div>
 
-      {/* Links - Hidden on Mobile */}
       <div className="hidden md:flex flex-1 justify-around w-full text-sm ease-in-out text-gray-500  dark:text-white">
         <Link
           to={`/dashboard?page=${page}`}
@@ -51,7 +49,6 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Right Side - Theme + Mobile Menu */}
       <div className="mr-5 flex items-center gap-4">
         <div onClick={handleToggle} className="cursor-pointer">
           {mode === "Dark" ? (

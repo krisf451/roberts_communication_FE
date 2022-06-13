@@ -12,11 +12,23 @@ const Contact = () => {
       <a href="mailto:kristianf451@gmail.com" target="_blank" rel="noreferrer">
         Email
       </a>
-      <a href="https://www.linkedin.com/in/kristianfulkerson/">Linked In</a>
-      <a href="https://github.com/krisf451" className="transform ">
+      <a
+        href="https://www.linkedin.com/in/kristianfulkerson/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Linked In
+      </a>
+      <a href="https://github.com/krisf451" target="_blank" rel="noreferrer">
         Github
       </a>
-      <a href="https://ksf-portfolio.vercel.app/">Portfolio</a>
+      <a
+        href="https://ksf-portfolio.vercel.app/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Portfolio
+      </a>
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { getUsers } from "../../api";
 
 const initialState = {
   users: [],
-  page: 1,
   isLoading: false,
   isError: false,
   isSuccess: false,
@@ -53,7 +52,7 @@ const usersSlice = createSlice({
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;
-      state.usersByPage = null;
+      state.users = null;
     },
   },
 });
