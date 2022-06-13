@@ -17,7 +17,7 @@ const UserDetails = () => {
   }, [dispatch]);
   return (
     <div className="w-full flex justify-center items-center mt-6 dark:text-white">
-      <div className="p-6 flex flex-col sm:flex-row items-center justify-center animate-slideup border dark:border-none bg-gray-100 dark:bg-secondary-dark-bg shadow-lg rounded-lg sm:justify-between">
+      <div className="p-6 flex flex-col sm:flex-row items-center justify-center animate-slideup bg-gray-100 dark:bg-secondary-dark-bg shadow-lg rounded-lg sm:justify-between">
         <div className="overflow-hidden h-64 w-64 mb-4 sm:mb-0 shadow-lg sm:mr-6 rounded-md">
           <img
             src={user?.picture?.large}

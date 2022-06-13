@@ -21,7 +21,7 @@ const Navbar = () => {
     dispatch(toggleDarkMode());
   };
   return (
-    <div className="bg-gray-200 dark:bg-secondary-dark-bg flex justify-between w-full h-[4rem] shadow-md items-center dark:text-white">
+    <div className="bg-gray-200 dark:bg-secondary-dark-bg flex justify-between w-full h-[4rem] shadow-md items-center dark:text-white relative z-50">
       {/* Left - Logo */}
       <div className="ml-5 text-2xl font-semibold uppercase">
         <Link to="/">

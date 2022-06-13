@@ -96,13 +96,13 @@ const Dashboard = () => {
         </h1>
         {searchTerm.length > 0
           ? filteredUsers?.map((user, i) => (
-              <Link to={`/dashboard/users/${user?.login?.uuid}`}>
+              <Link to={`/dashboard/users/${user?.login?.uuid}`} key={i}>
                 <UserCard key={i} user={user} />
               </Link>
             ))
           : users?.slice(start, end)?.map((user, i) => {
               return (
-                <Link to={`/dashboard/users/${user?.login?.uuid}`}>
+                <Link to={`/dashboard/users/${user?.login?.uuid}`} key={i}>
                   <UserCard key={i} user={user} />
                 </Link>
               );
