@@ -36,12 +36,6 @@ const usersSlice = createSlice({
       state.isSuccess = false;
       state.message = "";
     },
-    pageUp: (state) => {
-      state.page = state.page < 9 ? state.page + 1 : state.page;
-    },
-    pageDown: (state) => {
-      state.page = state.page > 1 ? state.page - 1 : state.page;
-    },
   },
   extraReducers: {
     [getRandomUsers.pending]: (state) => {
@@ -64,6 +58,6 @@ const usersSlice = createSlice({
   },
 });
 
-export const { reset, pageUp, pageDown } = usersSlice.actions;
+export const { reset } = usersSlice.actions;
 
 export default usersSlice.reducer;
