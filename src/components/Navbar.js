@@ -41,7 +41,7 @@ const Navbar = () => {
           to="/about"
           className="transition-color duration-300 hover:text-gray-800 dark:hover:text-gray-400"
         >
-          ABOUT
+          ABOUT ME
         </Link>
         <Link
           to="/contact"
