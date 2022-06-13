@@ -14,6 +14,7 @@ const Dashboard = () => {
   const [end, setEnd] = useState(10);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const recentUser = JSON.parse(localStorage.getItem("recentUser"));
 
   const filteredUsers = users.filter((user) => {
     return (
@@ -39,9 +40,6 @@ const Dashboard = () => {
       setStart((prev) => prev - 10);
       setEnd((prev) => prev - 10);
       setLocalPage((prev) => prev - 1);
-    } else {
-      setLocalPage(1);
-      navigate(`/dashboard`);
     }
     navigate(`/dashboard?page=${localPage - 1}`);
   };
@@ -51,9 +49,6 @@ const Dashboard = () => {
       setStart((prev) => prev + 10);
       setEnd((prev) => prev + 10);
       setLocalPage((prev) => prev + 1);
-    } else {
-      setLocalPage(10);
-      navigate(`/dashboard`);
     }
     navigate(`/dashboard?page=${localPage + 1}`);
   };
@@ -75,7 +70,7 @@ const Dashboard = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         {!searchTerm.length > 0 && (
-          <div className="flex w-48 justify-evenly items-center my-4">
+          <div className="flex w-48 justify-evenly items-center mt-4 mb-16 relative">
             <AiOutlineArrowLeft
               size={25}
               onClick={handlePaginateLeft}
@@ -87,6 +82,16 @@ const Dashboard = () => {
               onClick={handlePaginateRight}
               className="cursor-pointer"
             />
+            {recentUser && (
+              <div
+                className="absolute top-10 left-8 w-32 bg-yellow-200 h-10 rounded-md flex items-center justify-center cursor-pointer transtion-all transform duration-300 ease-in-out hover:scale-95 dark:text-black"
+                onClick={() =>
+                  navigate(`/dashboard/users/${recentUser?.login?.uuid}`)
+                }
+              >
+                Last Seen
+              </div>
+            )}
           </div>
         )}
       </div>

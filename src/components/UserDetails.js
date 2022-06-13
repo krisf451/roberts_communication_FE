@@ -17,6 +17,11 @@ const UserDetails = () => {
     return () => dispatch(reset());
   }, [dispatch]);
 
+  useEffect(() => {
+    localStorage.removeItem("recentUser");
+    localStorage.setItem("recentUser", JSON.stringify(user));
+  }, [user]);
+
   const getTimeUntilUsersBirthday = () => {
     let userBirthday = new Date(user?.dob?.date);
     let myBirthday, today, bday, diff;

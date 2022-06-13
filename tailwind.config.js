@@ -11,17 +11,12 @@ module.exports = {
     },
     extend: {
       animation: {
-        slideup: "slideup 1500ms ease-in-out",
-        shake: "shake 2s ease-linear",
+        slideup: "slideup 1s ease-in-out",
       },
       keyframes: {
         slideup: {
           from: { opacity: 0, transform: "translateY(25%)" },
           to: { opacity: 1, transform: "none" },
-        },
-        shake: {
-          from: { transform: "translateX(25%)" },
-          to: { transform: "none" },
         },
       },
       backgroundColor: {
