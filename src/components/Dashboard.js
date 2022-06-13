@@ -92,7 +92,9 @@ const Dashboard = () => {
       </div>
       <div className="grid gap-4 p-4 max-w-5xl xs:grid-cols-2 md:grid-cols-4 dark:bg-main-dark-bg dark:text-white">
         <h1 className="text-4xl font-extrabold xs:col-span-2 bg-yellow-200 dark:text-black xs:grid xs:grid-cols-2 pl-6 py-6 rounded-md">
-          <span>Check out some of these cool users!!</span>
+          <span className="animate-slideup">
+            Check out some of these cool users!!
+          </span>
         </h1>
         {searchTerm.length > 0
           ? filteredUsers?.map((user, i) => (

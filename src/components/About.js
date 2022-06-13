@@ -6,7 +6,7 @@ const About = () => {
       <h1 className="text-4xl font-extrabolda mb-5 animate-slideup">
         About Me
       </h1>
-      <div className="w-[400px] h-[400px] overflow-scroll scrollbar-hide text-center">
+      <div className="w-[300px] h-[400px] overflow-scroll scrollbar-hide text-center leading-10">
         Hello! I'm Kristian. A Full Stack Web Developer with a passion for
         problem-solving. 👋 Nice to meet you! Currently, I am proficient with
         HTML5, JavaScript, CSS3, React.js, Redux, and many more
