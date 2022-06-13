@@ -1,11 +1,11 @@
 import React from "react";
-import horsevideo from "../assets/horse-race.mp4";
+import peopleWalking from "../assets/people-walking.mp4";
 
 const Home = () => {
   return (
     <div className="dark:bg-main-dark-bg dark:text-white h-screen">
       <div className="absolute mt-[64px] top-0 left-0 w-full h-full bg-[#000000cc]"></div>
-      <video muted loop autoPlay src={horsevideo} />
+      <video muted loop autoPlay src={peopleWalking} />
       <div className="absolute top-0 text-white w-full h-full flex flex-col justify-center items-center">
         <h1 className="text-4xl font-extrabold mb-4 animate-slideup">
           Welcome
